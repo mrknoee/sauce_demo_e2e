@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 
 def to_slug(product_name: str) -> str:
-    """'Sauce Labs Backpack' -> 'sauce-labs-backpack' (the add/remove button suffix)."""
+    """Product name to button ID suffix (lowercase, hyphenated)."""
     return product_name.strip().lower().replace(" ", "-").replace(".", "").replace("(", "").replace(")", "")
 
 
@@ -50,6 +50,13 @@ class InventoryPage(BasePage):
 
     async def open_cart(self) -> None:
         await self.click(InventoryLocators.CART_LINK)
+
+    async def open_menu(self) -> None:
+        await self.click(InventoryLocators.BURGER_MENU_BUTTON)
+
+    async def reset_app_state(self) -> None:
+        await self.open_menu()
+        await self.click(InventoryLocators.RESET_APP_STATE_LINK)
 
     async def logout(self) -> None:
         logger.info("Logging out")

@@ -62,3 +62,13 @@ async def test_remove_item_on_cart_page(logged_in_inventory, cart_page):
     assert await cart_page.get_item_count() == 1
     names = await cart_page.get_item_names()
     assert products.BACKPACK not in names, f"Removed item still in cart: {names}"
+
+
+@allure.severity(allure.severity_level.NORMAL)
+@allure.story("Cart")
+async def test_reset_app_state_clears_cart(logged_in_inventory):
+    await logged_in_inventory.add_item_to_cart(products.BACKPACK)
+    await logged_in_inventory.open_menu()
+    await logged_in_inventory.reset_app_state()
+
+    assert await logged_in_inventory.get_cart_badge_count() == 0

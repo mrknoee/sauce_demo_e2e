@@ -5,7 +5,10 @@ class CheckoutLocators:
     LAST_NAME_INPUT = "[data-test='lastName']"
     POSTAL_CODE_INPUT = "[data-test='postalCode']"
     CONTINUE_BUTTON = "[data-test='continue']"
+    CANCEL_BUTTON = "[data-test='cancel']"
     ERROR_MESSAGE = "[data-test='error']"
+    PAYMENT_INFO = "text=SauceCard #31337"
+    SHIPPING_INFO = "text=Free Pony Express Delivery!"
 
     # Step two: overview
     TITLE = "[data-test='title']"

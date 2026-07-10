@@ -1,4 +1,4 @@
-"""Product display names used by the cart/checkout tests."""
+"""Sauce Labs product names."""
 
 BACKPACK = "Sauce Labs Backpack"
 BIKE_LIGHT = "Sauce Labs Bike Light"

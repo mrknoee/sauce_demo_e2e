@@ -10,8 +10,7 @@ logger = logging.getLogger(__name__)
 
 
 class BasePage:
-    """Async Playwright wrappers shared by all page objects. Timeouts are in seconds
-    at the call site and converted to milliseconds by ms()."""
+    """Async Playwright wrapper. Timeouts in seconds, converted to ms by ms()."""
 
     def __init__(self, page: Page):
         self.page = page

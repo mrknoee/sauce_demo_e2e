@@ -45,7 +45,7 @@ class Settings:
 
 
 class ElementWaits:
-    """Default interaction waits, in seconds (BasePage.ms converts to milliseconds)."""
+    """Timeouts in seconds (converted to ms by BasePage.ms())."""
     DEFAULT = 10
     QUICK = 5
     MEDIUM = 15

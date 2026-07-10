@@ -22,11 +22,20 @@ class CheckoutPage(BasePage):
     async def click_continue(self) -> None:
         await self.click(CheckoutLocators.CONTINUE_BUTTON)
 
+    async def click_cancel(self) -> None:
+        await self.click(CheckoutLocators.CANCEL_BUTTON)
+
     async def check_error_message(self, expected_text: str) -> None:
         await self.check_visibility(CheckoutLocators.ERROR_MESSAGE)
         await self.check_contains_text(CheckoutLocators.ERROR_MESSAGE, expected_text)
 
     # Step two: overview
+    async def check_payment_info(self) -> None:
+        await self.check_text(CheckoutLocators.PAYMENT_INFO, "SauceCard #31337")
+
+    async def check_shipping_info(self) -> None:
+        await self.check_text(CheckoutLocators.SHIPPING_INFO, "Free Pony Express Delivery!")
+
     async def check_overview_loaded(self) -> None:
         await self.check_text(CheckoutLocators.TITLE, "Checkout: Overview")
 
@@ -45,6 +54,9 @@ class CheckoutPage(BasePage):
     async def click_finish(self) -> None:
         logger.info("Finishing the order")
         await self.click(CheckoutLocators.FINISH_BUTTON)
+
+    async def click_back_home(self) -> None:
+        await self.click(CheckoutLocators.BACK_TO_PRODUCTS_BUTTON)
 
     # Step three: complete
     async def check_order_complete(self) -> None:

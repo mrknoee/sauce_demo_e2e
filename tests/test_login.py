@@ -42,6 +42,33 @@ async def test_login_with_wrong_password_is_rejected(login_page):
 
 @allure.severity(allure.severity_level.NORMAL)
 @allure.story("Login")
+async def test_login_with_empty_username_is_rejected(login_page):
+    await login_page.load()
+    await login_page.login("", STANDARD_USER["password"])
+
+    await login_page.check_error_message(INVALID_CREDENTIALS_ERROR)
+
+
+@allure.severity(allure.severity_level.NORMAL)
+@allure.story("Login")
+async def test_login_with_empty_password_is_rejected(login_page):
+    await login_page.load()
+    await login_page.login(STANDARD_USER["username"], "")
+
+    await login_page.check_error_message(INVALID_CREDENTIALS_ERROR)
+
+
+@allure.severity(allure.severity_level.NORMAL)
+@allure.story("Login")
+async def test_login_with_empty_credentials_is_rejected(login_page):
+    await login_page.load()
+    await login_page.login("", "")
+
+    await login_page.check_error_message(INVALID_CREDENTIALS_ERROR)
+
+
+@allure.severity(allure.severity_level.NORMAL)
+@allure.story("Login")
 async def test_standard_user_can_log_out(login_page, inventory_page):
     await login_page.load()
     await login_page.login(STANDARD_USER["username"], STANDARD_USER["password"])

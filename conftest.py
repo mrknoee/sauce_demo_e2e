@@ -80,7 +80,7 @@ async def checkout_page(page) -> CheckoutPage:
 
 @pytest_asyncio.fixture
 async def logged_in_inventory(login_page, inventory_page) -> InventoryPage:
-    """Log in as the standard user — the precondition for the cart/checkout suites."""
+    """Log in and return inventory page."""
     await login_page.load()
     await login_page.login(STANDARD_USER["username"], STANDARD_USER["password"])
     await inventory_page.check_loaded()
@@ -107,12 +107,12 @@ async def screenshot_on_failure(request, page):
             logger.warning(f"Could not capture failure screenshot: {exc}")
 
 
-# Build a single-file Allure report once the run finishes
+# Generate Allure report after test run
 def pytest_sessionfinish(session, exitstatus):
     if not Path(RESULTS_DIR).exists() or not any(Path(RESULTS_DIR).iterdir()):
         return
     if shutil.which("allure") is None:
-        logger.info("Allure CLI not found — skipping single-file report (install: brew install allure).")
+        logger.info("Allure CLI not installed; skipping report")
         return
     try:
         subprocess.run(
@@ -120,6 +120,6 @@ def pytest_sessionfinish(session, exitstatus):
             check=True,
             capture_output=True,
         )
-        logger.info(f"Single-file Allure report: {REPORT_DIR}/index.html")
+        logger.info(f"Allure report: {REPORT_DIR}/index.html")
     except (subprocess.CalledProcessError, OSError) as exc:
         logger.warning(f"Could not generate Allure report: {exc}")
