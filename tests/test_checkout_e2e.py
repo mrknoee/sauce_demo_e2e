@@ -10,6 +10,7 @@ pytestmark = pytest.mark.checkout
 @allure.severity(allure.severity_level.BLOCKER)
 @allure.story("Checkout end-to-end")
 @allure.title("Complete purchase: login -> cart -> checkout -> confirmation")
+@allure.id("CHK-001")
 async def test_full_checkout_flow(logged_in_inventory, cart_page, checkout_page):
     with allure.step("Add two products to the cart"):
         await logged_in_inventory.add_item_to_cart(products.BACKPACK)
@@ -43,6 +44,7 @@ async def test_full_checkout_flow(logged_in_inventory, cart_page, checkout_page)
 
 @allure.severity(allure.severity_level.NORMAL)
 @allure.story("Checkout end-to-end")
+@allure.id("CHK-002")
 async def test_checkout_requires_customer_information(logged_in_inventory, cart_page, checkout_page):
     await logged_in_inventory.add_item_to_cart(products.BACKPACK)
     await logged_in_inventory.open_cart()
@@ -57,6 +59,7 @@ async def test_checkout_requires_customer_information(logged_in_inventory, cart_
 
 @allure.severity(allure.severity_level.NORMAL)
 @allure.story("Checkout end-to-end")
+@allure.id("CHK-003")
 async def test_checkout_requires_last_name(logged_in_inventory, cart_page, checkout_page):
     await logged_in_inventory.add_item_to_cart(products.BACKPACK)
     await logged_in_inventory.open_cart()
@@ -71,6 +74,7 @@ async def test_checkout_requires_last_name(logged_in_inventory, cart_page, check
 
 @allure.severity(allure.severity_level.NORMAL)
 @allure.story("Checkout end-to-end")
+@allure.id("CHK-004")
 async def test_checkout_requires_postal_code(logged_in_inventory, cart_page, checkout_page):
     await logged_in_inventory.add_item_to_cart(products.BACKPACK)
     await logged_in_inventory.open_cart()
@@ -85,6 +89,7 @@ async def test_checkout_requires_postal_code(logged_in_inventory, cart_page, che
 
 @allure.severity(allure.severity_level.NORMAL)
 @allure.story("Checkout end-to-end")
+@allure.id("CHK-005")
 async def test_checkout_requires_all_fields(logged_in_inventory, cart_page, checkout_page):
     await logged_in_inventory.add_item_to_cart(products.BACKPACK)
     await logged_in_inventory.open_cart()
@@ -99,6 +104,7 @@ async def test_checkout_requires_all_fields(logged_in_inventory, cart_page, chec
 
 @allure.severity(allure.severity_level.NORMAL)
 @allure.story("Checkout end-to-end")
+@allure.id("CHK-006")
 async def test_checkout_step_one_cancel_returns_to_cart(logged_in_inventory, cart_page, checkout_page):
     await logged_in_inventory.add_item_to_cart(products.BACKPACK)
     await logged_in_inventory.open_cart()
@@ -112,6 +118,7 @@ async def test_checkout_step_one_cancel_returns_to_cart(logged_in_inventory, car
 
 @allure.severity(allure.severity_level.NORMAL)
 @allure.story("Checkout end-to-end")
+@allure.id("CHK-007")
 async def test_checkout_overview_cancel_returns_to_inventory(logged_in_inventory, cart_page, checkout_page, inventory_page):
     await logged_in_inventory.add_item_to_cart(products.BACKPACK)
     await logged_in_inventory.open_cart()
@@ -129,6 +136,7 @@ async def test_checkout_overview_cancel_returns_to_inventory(logged_in_inventory
 
 @allure.severity(allure.severity_level.NORMAL)
 @allure.story("Checkout end-to-end")
+@allure.id("CHK-008")
 async def test_checkout_overview_displays_payment_and_shipping_info(logged_in_inventory, cart_page, checkout_page):
     await logged_in_inventory.add_item_to_cart(products.BACKPACK)
     await logged_in_inventory.open_cart()
@@ -145,6 +153,7 @@ async def test_checkout_overview_displays_payment_and_shipping_info(logged_in_in
 
 @allure.severity(allure.severity_level.NORMAL)
 @allure.story("Checkout end-to-end")
+@allure.id("CHK-009")
 async def test_complete_order_back_home_clears_cart(logged_in_inventory, cart_page, checkout_page):
     await logged_in_inventory.add_item_to_cart(products.BACKPACK)
     await logged_in_inventory.open_cart()
@@ -165,6 +174,7 @@ async def test_complete_order_back_home_clears_cart(logged_in_inventory, cart_pa
 
 @allure.severity(allure.severity_level.NORMAL)
 @allure.story("Checkout end-to-end")
+@allure.id("CHK-010")
 async def test_single_item_totals_are_consistent(logged_in_inventory, cart_page, checkout_page):
     await logged_in_inventory.add_item_to_cart(products.FLEECE_JACKET)
     await logged_in_inventory.open_cart()

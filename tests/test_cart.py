@@ -8,6 +8,7 @@ pytestmark = pytest.mark.cart
 
 @allure.severity(allure.severity_level.CRITICAL)
 @allure.story("Cart")
+@allure.id("CART-001")
 async def test_add_single_item_updates_badge(logged_in_inventory):
     await logged_in_inventory.add_item_to_cart(products.BACKPACK)
 
@@ -16,6 +17,7 @@ async def test_add_single_item_updates_badge(logged_in_inventory):
 
 @allure.severity(allure.severity_level.NORMAL)
 @allure.story("Cart")
+@allure.id("CART-002")
 async def test_add_multiple_items_updates_badge(logged_in_inventory):
     await logged_in_inventory.add_item_to_cart(products.BACKPACK)
     await logged_in_inventory.add_item_to_cart(products.BIKE_LIGHT)
@@ -26,6 +28,7 @@ async def test_add_multiple_items_updates_badge(logged_in_inventory):
 
 @allure.severity(allure.severity_level.NORMAL)
 @allure.story("Cart")
+@allure.id("CART-003")
 async def test_remove_item_from_inventory_decrements_badge(logged_in_inventory):
     await logged_in_inventory.add_item_to_cart(products.BACKPACK)
     await logged_in_inventory.add_item_to_cart(products.BIKE_LIGHT)
@@ -37,6 +40,7 @@ async def test_remove_item_from_inventory_decrements_badge(logged_in_inventory):
 
 @allure.severity(allure.severity_level.CRITICAL)
 @allure.story("Cart")
+@allure.id("CART-004")
 async def test_added_items_appear_on_cart_page(logged_in_inventory, cart_page):
     await logged_in_inventory.add_item_to_cart(products.BACKPACK)
     await logged_in_inventory.add_item_to_cart(products.FLEECE_JACKET)
@@ -51,6 +55,7 @@ async def test_added_items_appear_on_cart_page(logged_in_inventory, cart_page):
 
 @allure.severity(allure.severity_level.NORMAL)
 @allure.story("Cart")
+@allure.id("CART-005")
 async def test_remove_item_on_cart_page(logged_in_inventory, cart_page):
     await logged_in_inventory.add_item_to_cart(products.BACKPACK)
     await logged_in_inventory.add_item_to_cart(products.BIKE_LIGHT)
@@ -66,6 +71,7 @@ async def test_remove_item_on_cart_page(logged_in_inventory, cart_page):
 
 @allure.severity(allure.severity_level.NORMAL)
 @allure.story("Cart")
+@allure.id("CART-006")
 async def test_reset_app_state_clears_cart(logged_in_inventory):
     await logged_in_inventory.add_item_to_cart(products.BACKPACK)
     await logged_in_inventory.open_menu()

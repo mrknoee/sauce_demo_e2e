@@ -9,6 +9,7 @@ pytestmark = pytest.mark.login
 @allure.severity(allure.severity_level.CRITICAL)
 @allure.story("Login")
 @pytest.mark.parametrize("username, profile", LOGIN_CASES, ids=[case[0] for case in LOGIN_CASES])
+@allure.id("LGN-001")
 async def test_login_per_user(login_page, username, profile):
     await login_page.load()
     await login_page.login(profile["username"], profile["password"])
@@ -21,6 +22,7 @@ async def test_login_per_user(login_page, username, profile):
 
 @allure.severity(allure.severity_level.CRITICAL)
 @allure.story("Login")
+@allure.id("LGN-002")
 async def test_locked_out_user_shows_error_banner(login_page):
     await login_page.load()
     await login_page.login(LOCKED_OUT_USER["username"], LOCKED_OUT_USER["password"])
@@ -33,6 +35,7 @@ async def test_locked_out_user_shows_error_banner(login_page):
 
 @allure.severity(allure.severity_level.NORMAL)
 @allure.story("Login")
+@allure.id("LGN-003")
 async def test_login_with_wrong_password_is_rejected(login_page):
     await login_page.load()
     await login_page.login(STANDARD_USER["username"], "wrong_password")
@@ -42,6 +45,7 @@ async def test_login_with_wrong_password_is_rejected(login_page):
 
 @allure.severity(allure.severity_level.NORMAL)
 @allure.story("Login")
+@allure.id("LGN-004")
 async def test_login_with_empty_username_is_rejected(login_page):
     await login_page.load()
     await login_page.login("", STANDARD_USER["password"])
@@ -51,6 +55,7 @@ async def test_login_with_empty_username_is_rejected(login_page):
 
 @allure.severity(allure.severity_level.NORMAL)
 @allure.story("Login")
+@allure.id("LGN-005")
 async def test_login_with_empty_password_is_rejected(login_page):
     await login_page.load()
     await login_page.login(STANDARD_USER["username"], "")
@@ -60,6 +65,7 @@ async def test_login_with_empty_password_is_rejected(login_page):
 
 @allure.severity(allure.severity_level.NORMAL)
 @allure.story("Login")
+@allure.id("LGN-006")
 async def test_login_with_empty_credentials_is_rejected(login_page):
     await login_page.load()
     await login_page.login("", "")
@@ -69,6 +75,7 @@ async def test_login_with_empty_credentials_is_rejected(login_page):
 
 @allure.severity(allure.severity_level.NORMAL)
 @allure.story("Login")
+@allure.id("LGN-007")
 async def test_standard_user_can_log_out(login_page, inventory_page):
     await login_page.load()
     await login_page.login(STANDARD_USER["username"], STANDARD_USER["password"])
