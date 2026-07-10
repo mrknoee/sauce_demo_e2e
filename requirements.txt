@@ -1,0 +1,11 @@
+playwright==1.57.0
+pytest==9.0.2
+pytest-asyncio==1.3.0
+pytest-html==4.1.1
+allure-pytest==2.13.5
+python-dotenv==1.0.1
+
+# After installing:
+#   playwright install chromium
+# The single-file Allure report needs the Allure CLI (Java):
+#   brew install allure   # macOS

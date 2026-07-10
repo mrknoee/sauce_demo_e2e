@@ -1,0 +1,47 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+.venv
+venv/
+env/
+ENV/
+
+# Environments
+.env
+.env.*
+!.env.example
+
+# pytest / coverage
+.pytest_cache/
+.cache
+.coverage
+htmlcov/
+
+# Reports & test artifacts
+allure-results/
+allure-report/
+reports/
+test-results/
+videos/
+screenshots/
+
+# Playwright
+playwright-report/
+
+# IDE
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Loose screenshots dropped in project root
+*.png
